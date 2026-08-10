@@ -30,13 +30,13 @@ class Sorteio {
 const sorteio = new Sorteio()
 
 export const FILTROS = [
-  { id: 'soma',        label: 'Soma das dezenas' },
-  { id: 'primos',      label: 'Números primos' },
-  { id: 'zeros',       label: 'Terminados em zero' },
-  { id: 'decadas',     label: 'Décadas concentradas' },
-  { id: 'pares',       label: 'Pares' },
-  { id: 'consecutivos',label: 'Consecutivos' },
-  { id: 'multiplos5',  label: 'Múltiplos de 5' },
+  { id: 'soma',         label: 'Soma das dezenas' },
+  { id: 'primos',       label: 'Números primos' },
+  { id: 'zeros',        label: 'Terminados em zero' },
+  { id: 'decadas',      label: 'Décadas concentradas' },
+  { id: 'pares',        label: 'Pares' },
+  { id: 'consecutivos', label: 'Consecutivos' },
+  { id: 'multiplos5',   label: 'Múltiplos de 5' },
 ]
 
 const fns = {
