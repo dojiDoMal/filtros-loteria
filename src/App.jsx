@@ -1,16 +1,23 @@
-import { faCopy, faTrophy, faXmark } from '@fortawesome/free-solid-svg-icons'
-import { FILTROS, filtrar } from './filtro'
+import { FILTROS, FILTROS_CONFIG_DEFAULT, filtrar } from './filtro'
 import { useState, useMemo } from 'react'
-import Button, { TipoBotao } from './componentes/Button/Button'
-import Card from './componentes/Card/Card'
-import ListaJogos from './componentes/ListaJogos/ListaJogos'
 import Navbar from './componentes/Navbar/Navbar'
+import Filtros from './paginas/Filtros'
+import Resultados from './paginas/Resultados'
 import './App.css'
 
 export default function App() {
   const [texto, setTexto] = useState('')
   const [ativos, setAtivos] = useState(new Set(FILTROS.map(f => f.id)))
+  const [filtrosConfig, setFiltrosConfig] = useState(FILTROS_CONFIG_DEFAULT)
   const [tab, setTab] = useState('filtros')
+  const [expandidos, setExpandidos] = useState(new Set())
+
+  const toggleExpandido = id =>
+    setExpandidos(prev => {
+      const next = new Set(prev)
+      next.has(id) ? next.delete(id) : next.add(id)
+      return next
+    })
 
   const toggle = id =>
     setAtivos(prev => {
@@ -19,7 +26,7 @@ export default function App() {
       return next
     })
 
-  const resultado = useMemo(() => filtrar(texto, ativos), [texto, ativos])
+  const resultado = useMemo(() => filtrar(texto, ativos, filtrosConfig), [texto, ativos, filtrosConfig])
 
   const total = texto.trim() ? texto.trim().split('\n').filter(Boolean).length : 0
   const removidos = useMemo(() => {
@@ -31,77 +38,27 @@ export default function App() {
     <div className="container">
       <Navbar tab={tab} setTab={setTab} />
 
-      {tab === 'filtros' && <div className="entrada">
-        <label><span>1</span>Seus jogos<button>?</button><button>📋 Colar</button></label>
-        <textarea
-          value={texto}
-          onChange={e => setTexto(e.target.value)}
-          placeholder={'01-02-03-04-05\n06-07-08-09-10'}
-          rows={6}
-        />
-        <span className="count">{total} {total === 1 ? 'jogo inserido' : 'jogos inseridos'}</span>
-      </div>}
-
       <div className="main">
         {tab === 'filtros' && (
-          <div className="col filtros">
-            <label><span>2</span>Filtros<button>Salvar perfil</button></label>
-            {FILTROS.map(f => (
-              <label key={f.id} className="check">
-                <input
-                  type="checkbox"
-                  checked={ativos.has(f.id)}
-                  onChange={() => toggle(f.id)}
-                />
-                {f.label}
-              </label>
-            ))}
-            <button
-              className="btn-aplicar"
-              disabled={total === 0}
-              onClick={() => { if (total > 0) { setTab('resultados'); window.scrollTo(0, 0) } }}
-            >
-              Aplicar filtros
-            </button>
-            <button
-              className="btn-limpar"
-              onClick={() => setAtivos(new Set())}
-            >
-              Limpar filtros
-            </button>
-            <div className="resumo">
-              <label>Resumo</label>
-              <div className="resumo-cards">
-                <div className="resumo-item aprovados"><span>Aprovados</span><span>{resultado.length}</span></div>
-                <div className="resumo-item excluidos"><span>Excluídos</span><span>{removidos.length}</span></div>
-                <div className="resumo-item"><span>Total</span><span>{total}</span></div>
-              </div>
-            </div>
-          </div>
+          <Filtros
+            texto={texto}
+            setTexto={setTexto}
+            ativos={ativos}
+            toggle={toggle}
+            setAtivos={setAtivos}
+            filtrosConfig={filtrosConfig}
+            setFiltrosConfig={setFiltrosConfig}
+            expandidos={expandidos}
+            toggleExpandido={toggleExpandido}
+            resultado={resultado}
+            removidos={removidos}
+            total={total}
+            setTab={setTab}
+          />
         )}
 
         {tab === 'resultados' && (
-          <div className="col">
-            <Card
-              icon={faTrophy}
-              iconClass="card-header-icon-success"
-              title="Aprovados"
-              subtitle="Jogos que passaram nos filtros"
-              action={<Button tipo={TipoBotao.AUXILIAR} icon={faCopy} label="Copiar tudo" />}
-            >
-              <ListaJogos jogos={resultado} />
-            </Card>
-
-            <Card
-              icon={faXmark}
-              iconClass="card-header-icon-danger"
-              title="Excluídos"
-              subtitle="Jogos que não passaram nos filtros"
-              action={<Button tipo={TipoBotao.AUXILIAR} icon={faCopy} label="Copiar tudo" />}
-            >
-              <ListaJogos jogos={removidos} variant="danger" />
-            </Card>
-          </div>
+          <Resultados resultado={resultado} removidos={removidos} />
         )}
       </div>
     </div>

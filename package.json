@@ -7,9 +7,14 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "oxlint",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "android": "vite build && npx cap sync android && cd android && gradlew assembleDebug",
+    "android:release": "vite build && npx cap sync android && cd android && gradlew assembleRelease"
   },
   "dependencies": {
+    "@capacitor/android": "^6.2.1",
+    "@capacitor/cli": "^6.2.1",
+    "@capacitor/core": "^6.2.1",
     "@fortawesome/fontawesome-svg-core": "^7.3.1",
     "@fortawesome/free-solid-svg-icons": "^7.3.1",
     "@fortawesome/react-fontawesome": "^3.5.0",
@@ -19,7 +24,7 @@
   "devDependencies": {
     "@types/react": "19.2.17",
     "@types/react-dom": "19.2.3",
-    "@vitejs/plugin-react": "6.0.3",
+    "@vitejs/plugin-react-swc": "^4.3.3",
     "oxlint": "1.71.0",
     "vite": "8.1.1"
   }

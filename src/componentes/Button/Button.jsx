@@ -2,8 +2,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import './Button.css'
 
 export const TipoBotao = {
+  DISCRETO_ALT: 'discreto-alt',
   DISCRETO: 'discreto',
   AUXILIAR: 'auxiliar',
+  PRIMARIO: 'primario',
 }
 
 export default function Button({ tipo = TipoBotao.AUXILIAR, icon, label, ...props }) {

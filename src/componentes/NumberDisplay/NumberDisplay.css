@@ -11,15 +11,15 @@
 
 .number-display-help {
   font-size: 0.8rem;
-  color: var(--color-hover);
+  color: var(--color-white-hover);
 }
 
 .number-display {
   border-radius: 100px;
-  background-color: var(--color-success);
+  background-color: var(--color-success-1);
   padding: 4px;
 }
 
 .number-display.danger {
-  background-color: var(--color-danger);
+  background-color: var(--color-danger-1);
 }

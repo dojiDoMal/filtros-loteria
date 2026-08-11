@@ -1,5 +1,5 @@
 .icone-titulo {
-  color: var(--purple);
+  color: var(--purple-1);
   transform: rotateZ(45deg);
   margin-right: 4px;
   font-size: 20px;
@@ -22,11 +22,30 @@
 }
 
 .nav-icon:hover {
-  color: var(--color-hover);
+  color: var(--color-white-hover);
 }
 
 .nav-icon:active {
-  color: var(--color-active);
+  color: var(--color-white-active);
+}
+
+.nav-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /*background: #111;*/
+  background: transparent;
+  padding: 0.75rem 1rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+}
+
+.nav-title {
+  font-size: 1.1rem;
+  font-weight: 600;
 }
 
 .nav-bottom {
@@ -51,10 +70,10 @@
 }
 
 .nav-bottom button:hover {
-  color: var(--color-hover);
+  color: var(--color-white-hover);
   background-color: var(--background-2);
 }
 
 .nav-bottom button.active {
-  color: var(--purple);
+  color: var(--purple-1);
 }

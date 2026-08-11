@@ -7,6 +7,31 @@
   border-radius: 100px;
 }
 
+.btn-discreto-alt {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border: 1px solid var(--color-white-ghost);
+  color: var(--color-white-ghost);
+  font-size: 10px;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 100px;
+  width: 14px;
+  height: 14px;
+}
+
+.btn-discreto-alt:hover {
+  color: var(--color-white-ghost-hover);
+  border: 1px solid var(--color-white-ghost-hover);
+}
+
+.btn-discreto-alt:active {
+  color: var(--color-white-ghost-active);
+  border: 1px solid var(--color-white-ghost-active);
+}
+
 .btn-discreto:hover {
   background-color: #ffffff11;
 }
@@ -17,15 +42,22 @@
 
 .btn-auxiliar {
   background-color: #1b2534;
-  color: var(--color-hover);
+  color: var(--color-white-hover);
   border: 1px solid #283343;
   padding: 8px;
   font-size: 0.8rem;
-  border-radius: 8px;
+  border-radius: var(--border-radius);
   cursor: pointer;
   display: flex;
   gap: 4px;
   align-items: center;
+}
+
+.btn-auxiliar:disabled,
+.btn-auxiliar:disabled:hover {
+  color: var(--color-aux-disabled);
+  cursor: not-allowed;
+  background-color: var(--background-1);
 }
 
 .btn-auxiliar:hover {
@@ -34,4 +66,29 @@
 
 .btn-auxiliar:active {
   background-color: #313c4d;
+}
+
+.btn-primario {
+  width: 100%;
+  padding: 0.6rem;
+  background: var(--purple-1);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.btn-primario:hover {
+  background: var(--purple-2);
+}
+
+.btn-primario:active {
+  background: var(--purple-3);
+}
+
+.btn-primario:disabled {
+  background: #333;
+  color: #666;
+  cursor: not-allowed;
 }

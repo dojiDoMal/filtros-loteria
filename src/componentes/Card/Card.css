@@ -1,6 +1,6 @@
 .card {
-  border-radius: 8px;
-  border: 1px solid #222a36;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-1);
   padding: 16px;
   gap: 16px;
   display: flex;
@@ -26,21 +26,56 @@
   gap: 4px;
 }
 
+.card-header-icon-wrapper {
+  position: relative;
+  display: inline-flex;
+}
+
+.card-header-icon-wrapper .card-header-icon-badge {
+  position: absolute;
+  top: -6px;
+  right: -8px;
+  font-size: 10px;
+  font-weight: bold;
+  line-height: 1;
+  padding: 2px 4px;
+  border-radius: 999px;
+  color: #fff;
+}
+
 .card-header-icon {
   font-size: 20px;
 }
 
 .card-header-icon-success {
-  color: var(--color-success);
+  color: var(--color-success-1);
   filter: drop-shadow(0 0 4px var(--color-success-glow)) drop-shadow(0 0 4px var(--color-success-glow));
 }
 
 .card-header-icon-danger {
-  color: var(--color-danger);
+  color: var(--color-danger-1);
   filter: drop-shadow(0 0 4px var(--color-danger-glow)) drop-shadow(0 0 4px var(--color-danger-glow));
 }
 
 .card-subtitle {
   font-size: 0.8rem;
-  color: var(--color-active);
+  color: var(--color-white-active);
+}
+
+.card-hint-button {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  color: var(--color-white-active);
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+}
+
+.card-hint-button:hover {
+  color: var(--color-white-hover);
+}
+
+.card-hint-button:active {
+  color: var(--color-white-active);
 }
