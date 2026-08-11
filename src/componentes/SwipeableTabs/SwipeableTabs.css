@@ -1,0 +1,17 @@
+.swipeable-viewport {
+  overflow: hidden;
+  width: 100%;
+}
+
+.swipeable-track {
+  display: flex;
+  cursor: grab;
+}
+
+.swipeable-track:active {
+  cursor: grabbing;
+}
+
+.swipeable-slide {
+  flex-shrink: 0;
+}
