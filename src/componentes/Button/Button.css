@@ -1,0 +1,37 @@
+.btn-discreto {
+  background-color: transparent;
+  border: none;
+  color: var(--color-white);
+  padding: 8px;
+  cursor: pointer;
+  border-radius: 100px;
+}
+
+.btn-discreto:hover {
+  background-color: #ffffff11;
+}
+
+.btn-discreto:active {
+  background-color: #ffffff22;
+}
+
+.btn-auxiliar {
+  background-color: #1b2534;
+  color: var(--color-hover);
+  border: 1px solid #283343;
+  padding: 8px;
+  font-size: 0.8rem;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.btn-auxiliar:hover {
+  background-color: #273243;
+}
+
+.btn-auxiliar:active {
+  background-color: #313c4d;
+}

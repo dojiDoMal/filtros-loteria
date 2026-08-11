@@ -1,6 +1,10 @@
-import { useState, useMemo } from 'react'
+import { faCopy, faTrophy, faXmark } from '@fortawesome/free-solid-svg-icons'
 import { FILTROS, filtrar } from './filtro'
-import Navbar from './Navbar'
+import { useState, useMemo } from 'react'
+import Button, { TipoBotao } from './componentes/Button/Button'
+import Card from './componentes/Card/Card'
+import ListaJogos from './componentes/ListaJogos/ListaJogos'
+import Navbar from './componentes/Navbar/Navbar'
 import './App.css'
 
 export default function App() {
@@ -75,16 +79,28 @@ export default function App() {
             </div>
           </div>
         )}
+
         {tab === 'resultados' && (
           <div className="col">
-            <label><span>🏆</span>Aprovados<button>📋Copiar tudo</button></label>
-            <ul className="lista-jogos">
-              {resultado.map((j, i) => <li key={i}>{j}</li>)}
-            </ul>
-            <label style={{ marginTop: '1rem' }}><span>❌</span>Excluídos<button>📋Copiar tudo</button></label>
-            <ul className="lista-jogos removidos">
-              {removidos.map((j, i) => <li key={i}>{j}</li>)}
-            </ul>
+            <Card
+              icon={faTrophy}
+              iconClass="card-header-icon-success"
+              title="Aprovados"
+              subtitle="Jogos que passaram nos filtros"
+              action={<Button tipo={TipoBotao.AUXILIAR} icon={faCopy} label="Copiar tudo" />}
+            >
+              <ListaJogos jogos={resultado} />
+            </Card>
+
+            <Card
+              icon={faXmark}
+              iconClass="card-header-icon-danger"
+              title="Excluídos"
+              subtitle="Jogos que não passaram nos filtros"
+              action={<Button tipo={TipoBotao.AUXILIAR} icon={faCopy} label="Copiar tudo" />}
+            >
+              <ListaJogos jogos={removidos} variant="danger" />
+            </Card>
           </div>
         )}
       </div>

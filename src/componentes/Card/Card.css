@@ -1,0 +1,46 @@
+.card {
+  border-radius: 8px;
+  border: 1px solid #222a36;
+  padding: 16px;
+  gap: 16px;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--background-1);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-header-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.card-header-info label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.card-header-icon {
+  font-size: 20px;
+}
+
+.card-header-icon-success {
+  color: var(--color-success);
+  filter: drop-shadow(0 0 4px var(--color-success-glow)) drop-shadow(0 0 4px var(--color-success-glow));
+}
+
+.card-header-icon-danger {
+  color: var(--color-danger);
+  filter: drop-shadow(0 0 4px var(--color-danger-glow)) drop-shadow(0 0 4px var(--color-danger-glow));
+}
+
+.card-subtitle {
+  font-size: 0.8rem;
+  color: var(--color-active);
+}

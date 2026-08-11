@@ -1,0 +1,33 @@
+.lista-jogos {
+  list-style: none;
+  counter-reset: item;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-family: monospace;
+  font-size: 1rem;
+}
+
+.lista-jogos li {
+  align-items: center;
+  display: flex;
+  gap: 8px;
+  counter-increment: item;
+  padding: 20px;
+  background-color: #0d131d;
+  border-radius: 8px;
+  border: 1px solid #222a36;
+}
+
+.lista-jogos li> :last-child {
+  margin-left: auto;
+}
+
+.lista-jogos li::before {
+  content: counter(item);
+  margin-right: 8px;
+  font-size: 20px;
+  min-width: 2ch;
+  text-align: right;
+  display: inline-block;
+}

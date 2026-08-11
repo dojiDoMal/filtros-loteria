@@ -1,0 +1,25 @@
+.number-display-group {
+  display: flex;
+  gap: 8px;
+  flex-direction: column;
+}
+
+.number-display-numbers {
+  display: flex;
+  gap: 8px;
+}
+
+.number-display-help {
+  font-size: 0.8rem;
+  color: var(--color-hover);
+}
+
+.number-display {
+  border-radius: 100px;
+  background-color: var(--color-success);
+  padding: 4px;
+}
+
+.number-display.danger {
+  background-color: var(--color-danger);
+}
